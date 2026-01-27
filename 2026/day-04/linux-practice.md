@@ -1,12 +1,12 @@
 # Day 04 – Linux Practice: Processes and Services
 
-1. Running processes
-- ps aux
+## 1. Running processes
+### ps aux
 a : all process
 u : user friendly
 x : including terminal process
 
-Output :
+**Output** :
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root           1  0.5  0.1 168044 12792 ?        Ss   16:45   0:03 /sbin/init splash
 root           2  0.0  0.0      0     0 ?        S    16:45   0:00 [kthreadd]
@@ -14,11 +14,11 @@ root           3  0.0  0.0      0     0 ?        S    16:45   0:00 [pool_workque
 root           4  0.0  0.0      0     0 ?        I<   16:45   0:00 [kworker/R-rcu_g]
 root           5  0.0  0.0      0     0 ?        I<   16:45   0:00 [kworker/R-rcu_p]
 
-2.Inspect one systemd service
-- systemctl status nginx
+## 2.Inspect one systemd service
+### systemctl status nginx
 **systemctl status** showing all active process
 
-Output : 
+**Output** : 
 ● nginx.service - A high performance web server and a reverse proxy server
      Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
      Active: active (running) since Tue 2026-01-27 16:45:57 IST; 19min ago
@@ -34,11 +34,11 @@ Output :
              ├─882 "nginx: worker process" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" ""
              └─883 "nginx: worker process" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" ""
 
-3.Capture a small troubleshooting flow
+## 3.Capture a small troubleshooting flow
 
 **Before**
-- systemctl status apache2
-Output:
+#### - systemctl status apache2
+**Output**:
 apache2.service
      Loaded: masked (Reason: Unit apache2.service is masked.)
      Active: inactive (dead) since Tue 2026-01-27 17:38:02 IST; 4min 42s ago
@@ -46,8 +46,8 @@ apache2.service
         CPU: 399ms
 
 **After**
-- systemctl status apache2
-Output:
+#### - systemctl status apache2
+**Output**:
 ● apache2.service - The Apache HTTP Server
      Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
      Active: active (running) since Tue 2026-01-27 17:44:55 IST; 31s ago
