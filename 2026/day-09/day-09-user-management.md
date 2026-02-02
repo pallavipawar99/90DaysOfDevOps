@@ -86,4 +86,3 @@ sudo userdel -r nairobi
 - How to set directory ownership and permissions
 - 775 allows owner & group full access
 - Shared folders are useful for team collaboration
-- These skills are important in real DevOps/admin work
