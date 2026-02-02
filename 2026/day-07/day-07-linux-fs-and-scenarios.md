@@ -50,7 +50,7 @@
   - Contains: custom applications
   - Use when checking manually installed software
 
-# Find the largest log file in /var/log
+## Find the largest log file in /var/log
 ```bash
 du -sh /var/log/* 2>/dev/null | sort -h | tail -5
 ```
@@ -75,7 +75,7 @@ du -sh /var/log/* 2>/dev/null | sort -h | tail -5
     - Shows last 5 lines, Displays 5 largest items
     - Final Meaning (one line): Shows top 5 largest log files/folders in /var/log while hiding errors
 
-# Scenario 1: Service Not Starting
+## Scenario 1: Service Not Starting
 ```
 Step 1: systemctl status myapp  
 Why: Check if service is running or failed
@@ -90,7 +90,7 @@ Step 4: systemctl list-units --type=service | grep myapp
 Why: Confirm service exists
 
 ```
-# Scenario 2: High CPU Usage
+## Scenario 2: High CPU Usage
 ```
 Step 1: top  
 Why: See live CPU usage
@@ -102,7 +102,7 @@ Step 3: Note PID
 Why: Track problematic process
 
 ```
-# Scenario 3: Finding Docker Logs
+## Scenario 3: Finding Docker Logs
 ```
 Step 1: systemctl status docker  
 Why: Check service health
@@ -115,7 +115,7 @@ Why: Follow logs in real time
 
 ```
 
-# Scenario 4: Permission Denied Script
+## Scenario 4: Permission Denied Script
 ```
 Step 1: ls -l backup.sh  
 Why: Check permissions
