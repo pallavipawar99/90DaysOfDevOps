@@ -313,3 +313,85 @@ git cherry-pick --abort
 Continue after resolving conflicts  
 Example:
 git cherry-pick --continue
+
+---
+## 🔹 Git Reset Commands
+
+### git reset --soft HEAD~1
+Undo last commit, keep staged  
+Example:
+git reset --soft HEAD~1
+
+---
+
+### git reset --mixed HEAD~1
+Undo commit and unstage changes  
+Example:
+git reset --mixed HEAD~1
+
+---
+
+### git reset --hard HEAD~1
+Delete commit and changes  
+Example:
+git reset --hard HEAD~1
+
+---
+
+### git reset <file>
+Unstage a file  
+Example:
+git reset file.txt
+
+---
+
+## 🔹 Git Revert Commands
+
+### git revert <commit-hash>
+Undo a specific commit safely  
+Example:
+git revert a1b2c3d
+
+---
+
+### git log --oneline
+Find commit ID to revert  
+Example:
+git log --oneline
+
+---
+
+### git revert --abort
+Cancel revert during conflict  
+Example:
+git revert --abort
+
+---
+
+## 🔹 Branching Strategy Related Commands
+
+### git branch
+Create/list branches  
+Example:
+git branch feature-login
+
+---
+
+### git switch -c <branch>
+Create and switch branch  
+Example:
+git switch -c feature-auth
+
+---
+
+### git merge <branch>
+Merge feature branch  
+Example:
+git merge feature-auth
+
+---
+
+### git pull
+Update branch before merging  
+Example:
+git pull origin main
