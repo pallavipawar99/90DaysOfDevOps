@@ -158,3 +158,158 @@ git remote add upstream https://github.com/original/repo.git
 Get updates from original repo  
 Example:
 git fetch upstream
+
+---
+
+## 🔹 Merge Commands
+
+### git merge <branch>
+Merge a branch into current branch  
+Example:
+git merge feature-login
+
+---
+
+### git merge --abort
+Cancel a merge during conflicts  
+Example:
+git merge --abort
+
+---
+
+### git log --oneline --graph
+View history with branch graph  
+Example:
+git log --oneline --graph
+
+---
+
+### git log --oneline --graph --all
+View all branches graph  
+Example:
+git log --oneline --graph --all
+
+---
+
+## 🔹 Rebase Commands
+
+### git rebase <branch>
+Rebase current branch onto another  
+Example:
+git rebase main
+
+---
+
+### git rebase --continue
+Continue after resolving conflicts  
+Example:
+git rebase --continue
+
+---
+
+### git rebase --abort
+Cancel rebase  
+Example:
+git rebase --abort
+
+---
+
+## 🔹 Squash Merge Commands
+
+### git merge --squash <branch>
+Combine all branch commits into one  
+Example:
+git merge --squash feature-profile
+
+Then commit:
+git commit -m "Add profile feature (squashed)"
+
+---
+
+## 🔹 Regular Merge
+
+### git merge <branch>
+Merge branch with full history  
+Example:
+git merge feature-settings
+
+---
+
+## 🔹 Git Stash Commands
+
+### git stash
+Save uncommitted changes  
+Example:
+git stash
+
+---
+
+### git stash pop
+Apply and remove stash  
+Example:
+git stash pop
+
+---
+
+### git stash apply
+Apply stash without removing  
+Example:
+git stash apply
+
+---
+
+### git stash list
+Show all stashes  
+Example:
+git stash list
+
+---
+
+### git stash apply stash@{n}
+Apply specific stash  
+Example:
+git stash apply stash@{1}
+
+---
+
+### git stash drop stash@{n}
+Delete a specific stash  
+Example:
+git stash drop stash@{1}
+
+---
+
+### git stash clear
+Delete all stashes  
+Example:
+git stash clear
+
+---
+
+## 🔹 Cherry-Pick Commands
+
+### git cherry-pick <commit-hash>
+Apply a specific commit to current branch  
+Example:
+git cherry-pick a1b2c3d
+
+---
+
+### git log --oneline
+Find commit IDs for cherry-picking  
+Example:
+git log --oneline
+
+---
+
+### git cherry-pick --abort
+Cancel cherry-pick during conflict  
+Example:
+git cherry-pick --abort
+
+---
+
+### git cherry-pick --continue
+Continue after resolving conflicts  
+Example:
+git cherry-pick --continue
