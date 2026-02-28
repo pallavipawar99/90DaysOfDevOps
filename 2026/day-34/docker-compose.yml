@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  app:
+    build: ./app
+    ports:
+      - "8000"   # removed fixed host port
+    depends_on:
+      - db
+    networks:
+      - backend
+      - frontend
+    labels:
+      com.project.name: "app-stack"
+      com.project.service: "application"
+      com.project.owner: "dev-team"
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: appdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    labels:
+      com.project.name: "app-stack"
+      com.project.service: "database"
+
+# ✅ Explicit networks
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+# ✅ Named volume
+volumes:
+  postgres_data:
+    driver: local

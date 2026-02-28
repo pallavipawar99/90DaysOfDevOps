@@ -36,6 +36,19 @@ If you don't have an app, clone a simple open-source one and Dockerize it.
 
 Build and test it locally.
 
+```
+- Multi-stage reduces final image size
+
+- Alpine keeps image lightweight
+
+- Non-root improves security
+
+- .dockerignore avoids unnecessary files
+
+- Smaller image = faster deployment
+```
+
+
 ---
 
 ### Task 3: Add Docker Compose
@@ -48,6 +61,35 @@ Write a `docker-compose.yml` that includes:
 6. **Healthchecks** on the database
 
 Run `docker compose up` and verify everything works together.
+
+```
+my-app/
+ ├── app.js
+ ├── package.json
+ ├── Dockerfile
+ ├── docker-compose.yml
+ ├── .env
+ └── .dockerignore
+```
+
+```env
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=secret
+POSTGRES_DB=appdb
+DB_HOST=db
+DB_PORT=5432
+```
+
+```bash
+docker compose up -d --build
+docker compose ps
+docker inspect postgres-db
+```
+- Compose manages multi-container applications
+- .env keeps configuration separate
+- Named volumes persist DB data
+- Custom networks isolate services
+- Healthchecks ensure app waits for DB readiness
 
 ---
 
