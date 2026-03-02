@@ -1,0 +1,43 @@
+## Build Your Docker Cheat Sheet
+Create `docker-cheatsheet.md` organized by category:
+- **Container commands** — run, ps, stop, rm, exec, logs
+    - run : `docker run -d -p 8080:80 --name mycontainer nginx` run a container
+    - ps : `docker ps` List running containers
+    - stop : `docker stop mycontainer` Stop a container
+    - rm : `docker rm mycontainer` Remove a container
+    - exec : `docker exec -it mycontainer bash` Execute command inside container
+    - logs : `docker logs mycontainer` View logs
+- **Image commands** — 
+    - build : `docker build -t myimage:v1 .` Build an image
+    - pull : `docker pull nginx` Pull image from Docker Hub
+    - push : `docker push username/myimage:v1` Push image to Docker Hub
+    - tag : `docker tag myimage:v1 username/myimage:v1` Tag an image
+    - ls : `docker images` List images
+    - rm : `docker rmi myimage:v1` Remove an image
+- **Volume commands** — 
+    - create : `docker volume create myvolume` Create volume
+    - ls : `docker volume ls` List volumes
+    - inspect : `docker volume inspect myvolume` Inspect volume
+    - rm : `docker volume rm myvolume` Remove volume
+- **Network commands** — 
+    - create : `docker network create mynetwork` Create network
+    - ls : `docker network ls` List networks
+    - inspect : `docker network inspect mynetwork` Inspect network
+    - connect : `docker network connect mynetwork mycontainer` Connect container to network
+- **Compose commands** — 
+    - up : `docker compose up` Start services and `docker compose up -d` Run in detached mode
+    - down : `docker compose down` Stop and remove services and `docker compose down -v` Remove volumes also
+    - ps : `docker compose ps` List services
+    - logs :  `docker compose logs` View logs
+    - build : `docker compose build` Build services
+- **Cleanup commands** — 
+    - prune : `docker container prune` Remove stopped containers `docker image prune` Remove unused images `docker volume prune` Remove unused volumes `docker network prune` Remove unused networks `docker system prune` Remove everything unused
+    - system df : `docker system df` Check Docker disk usage `docker system df -v` Detailed view
+- **Dockerfile instructions** — 
+    - FROM : `FROM ubuntu:22.04` Defines the base image.
+    - RUN : `RUN apt-get update && apt-get install -y curl` Executes commands during image build.
+    - COPY : `COPY . /app` Copies files from host to container.
+    - WORKDIR : `WORKDIR /app` Sets the working directory inside container.
+    - EXPOSE : `EXPOSE 8000` Documents the port the container uses.
+    - CMD : `CMD ["python", "app.py"]` Default command (can be overridden).
+    - ENTRYPOINT : `ENTRYPOINT ["python"]` Sets the main executable for container.
