@@ -1,0 +1,15 @@
+name: Self Hosted Label Test
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: [self-hosted, my-linux-runner]
+
+    steps:
+      - name: Check runner
+        run: |
+          echo "Running on labeled runner"
+          hostname
+          whoami
