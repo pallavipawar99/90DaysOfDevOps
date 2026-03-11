@@ -1,0 +1,37 @@
+name: Docker Build and Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Get Short Commit Hash
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ vars.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build Docker Image
+        run: |
+          docker build -t ${{ vars.DOCKER_USERNAME }}/joke_app:latest \
+          -t ${{ vars.DOCKER_USERNAME }}/joke_app:sha-${{ steps.vars.outputs.sha_short }} .
+
+      - name: Push Docker Images
+        run: |
+          docker push ${{ vars.DOCKER_USERNAME }}/joke_app:latest
+          docker push ${{ vars.DOCKER_USERNAME }}/joke_app:sha-${{ steps.vars.outputs.sha_short }}
+
+      - name: Push Docker Images
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker push ${{ vars.DOCKER_USERNAME }}/joke_app:latest
+          docker push ${{ vars.DOCKER_USERNAME }}/joke_app:sha-${{ steps.vars.outputs.sha_short }}
