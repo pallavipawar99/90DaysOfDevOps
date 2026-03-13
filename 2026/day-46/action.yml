@@ -1,0 +1,41 @@
+name: "Setup and Greet"
+description: "Prints a greeting and shows date + OS"
+
+inputs:
+  name:
+    description: "Person to greet"
+    required: true
+  language:
+    description: "Language for greeting"
+    required: false
+    default: "en"
+
+outputs:
+  greeted:
+    description: "Indicates if greeting was printed"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Print greeting
+      shell: bash
+      run: |
+        if [ "${{ inputs.language }}" = "en" ]; then
+          echo "Hello, ${{ inputs.name }}!"
+        elif [ "${{ inputs.language }}" = "es" ]; then
+          echo "¡Hola, ${{ inputs.name }}!"
+        elif [ "${{ inputs.language }}" = "fr" ]; then
+          echo "Bonjour, ${{ inputs.name }}!"
+        else
+          echo "Hello, ${{ inputs.name }}!"
+        fi
+
+    - name: Print date and runner OS
+      shell: bash
+      run: |
+        echo "Current date: $(date)"
+        echo "Runner OS: $RUNNER_OS"
+
+    - name: Set greeted output
+      shell: bash
+      run: echo "greeted=true" >> $GITHUB_OUTPUT
