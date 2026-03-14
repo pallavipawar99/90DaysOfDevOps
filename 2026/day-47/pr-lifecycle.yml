@@ -1,0 +1,28 @@
+name: PR-Lifecycle
+
+on: 
+    pull_request:
+        types:
+            - opened
+            - synchronize
+            - reopened
+            - closed
+
+jobs:
+    pr_lifecycle:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Print PR Metadata
+              run: |
+                echo "Event Action: ${{ github.event.action }}"
+                echo "PR Title: ${{ github.event.pull_request.title }}"
+                echo "PR Author: ${{ github.event.pull_request.user.login }}"
+                echo "Source Branch: ${{ github.event.pull_request.head.ref }}"
+                echo "Target Branch: ${{ github.event.pull_request.base.ref }}"
+
+            - name: Handled merge PR
+              if: github.event.pull_request.merged == true
+              run: echo "This PR was successfully merged into ${{ github.event.pull_request.base.ref }}!"

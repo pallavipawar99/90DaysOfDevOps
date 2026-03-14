@@ -1,0 +1,25 @@
+name: Deploy After Tests
+
+on:
+  workflow_run:
+    workflows: ["Run Tests"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Check the actual result of the 'Run Tests' workflow
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Deploying application
+        run: echo "Tests passed! Starting deployment..."
+
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion != 'success' }}
+    steps:
+      - name: Workflow Failed Warning
+        run: |
+          echo "::warning::The triggering workflow failed. Deployment skipped."
+          exit 1
